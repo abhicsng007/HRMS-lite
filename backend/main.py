@@ -1,19 +1,26 @@
+import os
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import models, schemas, crud
 from database import engine, SessionLocal
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="HRMS Lite")
 
-# ✅ ADD THIS
+FRONTEND_URL = os.getenv("FRONTEND_URL")
+PORT = int(os.getenv("PORT", 8000))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # frontend origin
+    allow_origins=[FRONTEND_URL],
     allow_credentials=True,
-    allow_methods=["*"],      # GET, POST, DELETE, OPTIONS
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 

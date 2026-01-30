@@ -1,4 +1,8 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://127.0.0.1:8000"
+    : window.API_BASE_URL;
+
 
 async function apiRequest(url, options = {}) {
   const res = await fetch(API_BASE + url, {
