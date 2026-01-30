@@ -45,23 +45,28 @@ The application simulates a basic internal HR tool for managing employees and tr
 
 ## 📁 Project Structure
 
+```
 hrms-lite/
-│
-├── backend/
-│ ├── main.py
-│ ├── database.py
-│ ├── models.py
-│ ├── schemas.py
-│ └── hrms.db
-│
-├── frontend/
-│ ├── index.html
-│ ├── styles.css
-│ ├── app.js
-│ ├── api.js
-│ └── ui.js
-│
-└── README.md
+|
+|-- backend/
+|   |-- main.py          # FastAPI entry point (routes wiring)
+|   |-- database.py      # DB connection & session handling
+|   |-- models.py        # SQLAlchemy models
+|   |-- schemas.py       # Pydantic request/response schemas
+|   |-- crud.py          # DB operations (Create, Read, Update, Delete)
+|   |-- seed.py          # Initial dummy data seeding
+|   |-- hrms.db          # SQLite database
+|
+|-- frontend/
+|   |-- index.html       # Main UI
+|   |-- styles.css       # Styling
+|   |-- app.js           # App bootstrap & event wiring
+|   |-- api.js           # Backend API calls
+|   |-- ui.js            # DOM rendering logic
+|   |-- state.js         # Centralized frontend state
+|
+`-- README.md
+```
 
 
 ---
