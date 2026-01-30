@@ -73,7 +73,7 @@ hrms-lite/
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Backend Setup
+## ⚙️ Backend Setup
 
 ```bash
 cd backend
@@ -81,50 +81,73 @@ python -m venv venv
 source venv/bin/activate     # Windows: venv\Scripts\activate
 pip install fastapi uvicorn sqlalchemy pydantic
 uvicorn main:app --reload
+```
+
 Backend will start at:
 
+```
 http://127.0.0.1:8000
-2️⃣ Frontend Setup
+```
+
+---
+
+## 🎨 Frontend Setup
+
+```bash
 cd frontend
-Open index.html directly in your browser
-(or use Live Server extension in VS Code).
+```
 
-🔌 API Endpoints
-Employees
-Method	Endpoint	Description
-GET	/employees	Get all employees
-POST	/employees	Add new employee
-DELETE	/employees/{id}	Delete employee
-Attendance
-Method	Endpoint	Description
-POST	/attendance	Mark attendance
-GET	/attendance/{employee_id}	View attendance
-🚦 Validation & Error Handling
-Required field checks
+Open `index.html` directly in your browser  
+**OR** use **Live Server** extension in VS Code.
 
-Email format validation
+---
 
-Duplicate employee prevention
+## 🔌 API Endpoints
 
-Meaningful HTTP status codes
+### 👨‍💼 Employees
 
-User-friendly UI messages
+| Method | Endpoint              | Description          |
+|------:|-----------------------|----------------------|
+| GET   | `/employees`          | Get all employees    |
+| POST  | `/employees`          | Add new employee     |
+| DELETE| `/employees/{id}`     | Delete employee      |
 
-🎯 Scope Limitations
-Single admin user (no authentication)
+### 🕒 Attendance
 
-No payroll or leave management
+| Method | Endpoint                       | Description            |
+|------:|--------------------------------|------------------------|
+| POST  | `/attendance`                  | Mark attendance        |
+| GET   | `/attendance/{employee_id}`    | View attendance        |
 
-No advanced HR workflows
+---
 
-💡 Future Improvements
-Dashboard summary
+## 🚦 Validation & Error Handling
 
-Attendance date filters
+- Required field checks  
+- Email format validation  
+- Duplicate employee prevention  
+- Meaningful HTTP status codes  
+- User-friendly UI messages  
 
-Pagination for employee list
+---
 
-Authentication & roles
+## 🎯 Scope Limitations
 
-📄 License
-This project is for learning and demonstration purposes.
+- Single admin user (no authentication)  
+- No payroll or leave management  
+- No advanced HR workflows  
+
+---
+
+## 💡 Future Improvements
+
+- Dashboard summary  
+- Attendance date filters  
+- Pagination for employee list  
+- Authentication & role-based access  
+
+---
+
+## 📄 License
+
+This project is for **learning and demonstration purposes**.
