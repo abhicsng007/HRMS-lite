@@ -1,0 +1,4 @@
+window.state = {
+  employees: [],
+  attendance: [],
+};
