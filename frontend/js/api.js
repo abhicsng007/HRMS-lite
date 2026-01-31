@@ -20,11 +20,11 @@ async function apiRequest(url, options = {}) {
 }
 
 function getEmployees() {
-  return apiRequest("/employees");
+  return apiRequest("/employees/");
 }
 
 function createEmployee(data) {
-  return apiRequest("/employees", {
+  return apiRequest("/employees/", {
     method: "POST",
     body: JSON.stringify(data),
   });
@@ -35,7 +35,7 @@ function removeEmployee(id) {
 }
 
 function markAttendance(data) {
-  return apiRequest("/attendance", {
+  return apiRequest("/attendance/", {
     method: "POST",
     body: JSON.stringify(data),
   });
