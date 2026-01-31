@@ -37,6 +37,10 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/")
+def root():
+    return {"message": "HRMS Lite API is running"}
+
 @app.post("/api/employees", status_code=201)
 def add_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
     try:
