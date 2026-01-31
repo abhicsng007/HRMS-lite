@@ -14,12 +14,12 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="HRMS Lite")
 
 FRONTEND_URL = os.getenv("FRONTEND_URL")
-
+PORT = int(os.getenv("PORT", 8080))
 
 origins = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
-    "https://hrms-lite-eight.vercel.app/",
+    "https://hrms-lite-eight.vercel.app",
 ]
 
 app.add_middleware(
@@ -36,10 +36,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
 
 @app.post("/api/employees", status_code=201)
 def add_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
@@ -66,7 +62,3 @@ def mark_attendance(att: schemas.AttendanceCreate, db: Session = Depends(get_db)
 @app.get("/api/attendance/{emp_id}")
 def get_attendance(emp_id: str, db: Session = Depends(get_db)):
     return crud.get_attendance(db, emp_id)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
