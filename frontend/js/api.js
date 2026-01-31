@@ -1,6 +1,6 @@
 const API_BASE =
   window.location.hostname === "localhost"
-    ? "https://127.0.0.1:8080"
+    ? "http://127.0.0.1:8080/api"
     : "https://hrms-lite-production-d793.up.railway.app/api";
 
 
