@@ -37,9 +37,9 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/")
-def root():
-    return {"message": "HRMS Lite API is running"}
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
 
 @app.post("/api/employees", status_code=201)
 def add_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
@@ -66,3 +66,7 @@ def mark_attendance(att: schemas.AttendanceCreate, db: Session = Depends(get_db)
 @app.get("/api/attendance/{emp_id}")
 def get_attendance(emp_id: str, db: Session = Depends(get_db)):
     return crud.get_attendance(db, emp_id)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)
