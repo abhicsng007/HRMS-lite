@@ -37,28 +37,28 @@ def get_db():
     finally:
         db.close()
 
-@app.post("/employees", status_code=201)
+@app.post("/api/employees", status_code=201)
 def add_employee(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
     try:
         return crud.create_employee(db, employee)
     except:
         raise HTTPException(status_code=409, detail="Employee already exists")
 
-@app.get("/employees")
+@app.get("/api/employees")
 def list_employees(db: Session = Depends(get_db)):
     return crud.get_employees(db)
 
-@app.delete("/employees/{emp_id}")
+@app.delete("/api/employees/{emp_id}")
 def remove_employee(emp_id: str, db: Session = Depends(get_db)):
     emp = crud.delete_employee(db, emp_id)
     if not emp:
         raise HTTPException(status_code=404, detail="Employee not found")
     return {"message": "Employee deleted"}
 
-@app.post("/attendance", status_code=201)
+@app.post("/api/attendance", status_code=201)
 def mark_attendance(att: schemas.AttendanceCreate, db: Session = Depends(get_db)):
     return crud.mark_attendance(db, att)
 
-@app.get("/attendance/{emp_id}")
+@app.get("/api/attendance/{emp_id}")
 def get_attendance(emp_id: str, db: Session = Depends(get_db)):
     return crud.get_attendance(db, emp_id)
