@@ -6,7 +6,6 @@ const API_BASE =
 
 
 async function apiRequest(url, options = {}) {
-  console.log("url" + url);
   const res = await fetch(API_BASE + url, {
     headers: { "Content-Type": "application/json" },
     ...options,
