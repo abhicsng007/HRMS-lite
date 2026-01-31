@@ -14,7 +14,7 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="HRMS Lite")
 
 FRONTEND_URL = os.getenv("FRONTEND_URL")
-PORT = int(os.getenv("PORT", 8000))
+
 
 origins = [
     "http://localhost:5500",
