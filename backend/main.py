@@ -19,7 +19,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL")
 origins = [
     "http://localhost:5500",
     "http://127.0.0.1:5500",
-    "https://hrms-lite-eight.vercel.app",
+    "https://hrms-lite-eight.vercel.app/",
 ]
 
 app.add_middleware(
